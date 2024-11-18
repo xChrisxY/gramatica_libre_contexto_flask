@@ -76,6 +76,7 @@
             } else {
                 screen.value = data.result;
                 console.log("Aquí nomás -->", JSON.stringify(data.tree, null, 2));
+                console.log("Aquí nomás -->", JSON.stringify(data.result, null, 2));
                 renderTree(data.tree);
             }
         }

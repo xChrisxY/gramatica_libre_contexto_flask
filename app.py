@@ -44,10 +44,11 @@ parser = Lark(grammar, parser='lalr', transformer=TreeBuilder())
 def index():
     if request.method == "POST":
         expression = request.form.get("expression")
+        print(expression)
         try:
             # Parsear la expresión
             tree = parser.parse(expression)
-            result = evaluate(tree)
+            result = eval(expression)
             return jsonify({"result": result, "tree": tree})  # Enviar el árbol serializable
         except Exception as e:
             return jsonify({"error": str(e)})

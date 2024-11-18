@@ -124,11 +124,13 @@ button.tree:hover {
     stroke-width: 2px;
 }
 
-
 #tree {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    color: green;
+    background-color: #1e1e2f;
+    padding: 10px;
 }
 
 .tree-node {
@@ -137,16 +139,71 @@ button.tree:hover {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    margin: 10px;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    background-color: #1e1e2f;
+    color: white;
     min-width: 50px;
     text-align: center;
+    position: relative;
+}
+
+.tree-node::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 1px;
+    height: 10px;
+    background-color: #4CAF50;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tree-node-left::after,
+.tree-node-right::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 1px;
+    height: 10px;
+    background-color: #4CAF50;
+}
+
+.tree-node-left::after {
+    left: -50%;
+}
+
+.tree-node-right::after {
+    right: -50%;
 }
 
 .tree-children {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    width: 100%;
+    position: relative;
+}
+
+.tree-children > .tree-node {
+    margin-left: 30px;
+    margin-right: 30px;
+    position: relative;
+}
+
+.tree-children > .tree-node::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 50%;
+    height: 10px;
+    background-color: #4CAF50;
+    left: 0;
+    z-index: -1;
+}
+
+.tree-node > .tree-children {
+    margin-top: 10px;
+    justify-content: space-between;
 }
