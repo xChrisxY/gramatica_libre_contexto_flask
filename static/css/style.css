@@ -101,20 +101,6 @@ button.tree:hover {
 }
 
 /* Contenedor del árbol */
-#tree {
-    margin-top: 20px;
-    background-color: #282c34;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
-    width: 300px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-}
 
 /* Nodo del árbol */
 .node {
@@ -136,4 +122,31 @@ button.tree:hover {
 .line {
     stroke: #61dafb;
     stroke-width: 2px;
+}
+
+
+#tree {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tree-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    min-width: 50px;
+    text-align: center;
+}
+
+.tree-children {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }

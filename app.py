@@ -23,19 +23,19 @@ grammar = """
 class TreeBuilder(Transformer):
     @v_args(inline=True)
     def number(self, n):
-        return float(n)
-    
+        return {"value": float(n), "left": None, "right": None}
+
     def add(self, args):
-        return ("+", args[0], args[1])
-    
+        return {"value": "+", "left": args[0], "right": args[1]}
+
     def sub(self, args):
-        return ("-", args[0], args[1])
-    
+        return {"value": "-", "left": args[0], "right": args[1]}
+
     def mul(self, args):
-        return ("*", args[0], args[1])
-    
+        return {"value": "*", "left": args[0], "right": args[1]}
+
     def div(self, args):
-        return ("/", args[0], args[1])
+        return {"value": "/", "left": args[0], "right": args[1]}
 
 # Instanciar Lark
 parser = Lark(grammar, parser='lalr', transformer=TreeBuilder())
@@ -48,7 +48,7 @@ def index():
             # Parsear la expresión
             tree = parser.parse(expression)
             result = evaluate(tree)
-            return jsonify({"result": result, "tree": tree})
+            return jsonify({"result": result, "tree": tree})  # Enviar el árbol serializable
         except Exception as e:
             return jsonify({"error": str(e)})
     return render_template("index.html")
